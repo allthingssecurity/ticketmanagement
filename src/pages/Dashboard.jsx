@@ -41,60 +41,89 @@ export default function Dashboard() {
 
   return (
     <div className="animate-fade-in">
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">{roleGreeting[user.role]}</h1>
-        <p className="text-gray-500 text-sm mt-1">Welcome back, {user.name}</p>
+      {/* Gradient Welcome Banner */}
+      <div className="mb-6 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 rounded-2xl p-6 shadow-lg shadow-blue-500/10">
+        <div className="flex items-center gap-3">
+          <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+          </div>
+          <div>
+            <h1 className="text-2xl font-bold text-white">{roleGreeting[user.role]}</h1>
+            <p className="text-blue-200 text-sm">Welcome back, {user.name}</p>
+          </div>
+        </div>
       </div>
 
       {/* Stat Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <StatCard
-          title={user.role === ROLES.TEACHER ? 'My Tickets' : 'Total Tickets'}
-          value={myTickets.length}
-          color="primary"
-          icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>}
-        />
-        <StatCard
-          title="Open"
-          value={openTickets.length}
-          color="warning"
-          icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
-        />
-        <StatCard
-          title="Resolved"
-          value={resolvedTickets.length}
-          color="success"
-          icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
-        />
-        {user.role === ROLES.ADMIN ? (
+        <div className="animate-slide-up stagger-1">
           <StatCard
-            title="New (Unassigned)"
-            value={newTickets.length}
-            color="danger"
-            icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" /></svg>}
+            title={user.role === ROLES.TEACHER ? 'My Tickets' : 'Total Tickets'}
+            value={myTickets.length}
+            color="primary"
+            icon={<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>}
           />
-        ) : (
+        </div>
+        <div className="animate-slide-up stagger-2">
           <StatCard
-            title="Avg Resolution"
-            value={avgResolution}
-            color="purple"
-            icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>}
+            title="Open"
+            value={openTickets.length}
+            color="warning"
+            icon={<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
           />
-        )}
+        </div>
+        <div className="animate-slide-up stagger-3">
+          <StatCard
+            title="Resolved"
+            value={resolvedTickets.length}
+            color="success"
+            icon={<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
+          />
+        </div>
+        <div className="animate-slide-up stagger-4">
+          {user.role === ROLES.ADMIN ? (
+            <StatCard
+              title="New (Unassigned)"
+              value={newTickets.length}
+              color="danger"
+              icon={<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" /></svg>}
+            />
+          ) : (
+            <StatCard
+              title="Avg Resolution"
+              value={avgResolution}
+              color="purple"
+              icon={<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>}
+            />
+          )}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Recent Tickets */}
-        <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
-          <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-gray-900">Recent Tickets</h3>
+        <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+          <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between bg-gradient-to-r from-blue-50 to-white">
+            <div className="flex items-center gap-2">
+              <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <h3 className="text-sm font-semibold text-gray-900">Recent Tickets</h3>
+            </div>
             <Link to="/tickets" className="text-xs text-primary-600 hover:text-primary-700 font-medium">
               View all
             </Link>
           </div>
           {recentTickets.length === 0 ? (
-            <div className="py-8 text-center">
-              <p className="text-sm text-gray-400">No tickets yet</p>
+            <div className="py-12 text-center">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-100 rounded-full mb-3">
+                <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+              </div>
+              <p className="text-sm font-medium text-gray-500">No tickets yet</p>
+              <p className="text-xs text-gray-400 mt-1">Tickets will appear here once submitted</p>
             </div>
           ) : (
             <div className="divide-y divide-gray-50">
@@ -112,11 +141,16 @@ export default function Dashboard() {
         </div>
 
         {/* Critical / High priority */}
-        <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
-          <div className="px-5 py-4 border-b border-gray-100">
-            <h3 className="text-sm font-semibold text-gray-900">
-              {user.role === ROLES.ADMIN ? 'Needs Attention' : 'High Priority'}
-            </h3>
+        <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+          <div className="px-5 py-4 border-b border-gray-100 bg-gradient-to-r from-orange-50 to-white">
+            <div className="flex items-center gap-2">
+              <svg className="w-4 h-4 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
+              </svg>
+              <h3 className="text-sm font-semibold text-gray-900">
+                {user.role === ROLES.ADMIN ? 'Needs Attention' : 'High Priority'}
+              </h3>
+            </div>
           </div>
           {(() => {
             const urgent = myTickets
@@ -129,8 +163,14 @@ export default function Dashboard() {
 
             if (urgent.length === 0) {
               return (
-                <div className="py-8 text-center">
-                  <p className="text-sm text-gray-400">No urgent tickets</p>
+                <div className="py-12 text-center">
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full mb-3">
+                    <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <p className="text-sm font-medium text-gray-500">All clear!</p>
+                  <p className="text-xs text-gray-400 mt-1">No urgent tickets at this time</p>
                 </div>
               );
             }

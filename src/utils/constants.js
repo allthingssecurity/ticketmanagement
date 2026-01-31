@@ -85,18 +85,18 @@ export const LOCATIONS = [
 ];
 
 export const STATUS_COLORS = {
-  [STATUSES.NEW]: { bg: 'bg-blue-100', text: 'text-blue-800', dot: 'bg-blue-500' },
-  [STATUSES.ASSIGNED]: { bg: 'bg-purple-100', text: 'text-purple-800', dot: 'bg-purple-500' },
-  [STATUSES.IN_PROGRESS]: { bg: 'bg-yellow-100', text: 'text-yellow-800', dot: 'bg-yellow-500' },
-  [STATUSES.ON_HOLD]: { bg: 'bg-orange-100', text: 'text-orange-800', dot: 'bg-orange-500' },
-  [STATUSES.RESOLVED]: { bg: 'bg-green-100', text: 'text-green-800', dot: 'bg-green-500' },
-  [STATUSES.CLOSED]: { bg: 'bg-gray-100', text: 'text-gray-800', dot: 'bg-gray-500' },
-  [STATUSES.REOPENED]: { bg: 'bg-red-100', text: 'text-red-800', dot: 'bg-red-500' },
+  [STATUSES.NEW]: { bg: 'bg-blue-100', text: 'text-blue-800', dot: 'bg-blue-500', border: 'border-blue-300', gradient: 'from-blue-500 to-blue-600' },
+  [STATUSES.ASSIGNED]: { bg: 'bg-purple-100', text: 'text-purple-800', dot: 'bg-purple-500', border: 'border-purple-300', gradient: 'from-purple-500 to-purple-600' },
+  [STATUSES.IN_PROGRESS]: { bg: 'bg-yellow-100', text: 'text-yellow-800', dot: 'bg-yellow-500', border: 'border-yellow-300', gradient: 'from-yellow-500 to-yellow-600' },
+  [STATUSES.ON_HOLD]: { bg: 'bg-orange-100', text: 'text-orange-800', dot: 'bg-orange-500', border: 'border-orange-300', gradient: 'from-orange-500 to-orange-600' },
+  [STATUSES.RESOLVED]: { bg: 'bg-green-100', text: 'text-green-800', dot: 'bg-green-500', border: 'border-green-300', gradient: 'from-green-500 to-green-600' },
+  [STATUSES.CLOSED]: { bg: 'bg-gray-100', text: 'text-gray-800', dot: 'bg-gray-500', border: 'border-gray-300', gradient: 'from-gray-500 to-gray-600' },
+  [STATUSES.REOPENED]: { bg: 'bg-red-100', text: 'text-red-800', dot: 'bg-red-500', border: 'border-red-300', gradient: 'from-red-500 to-red-600' },
 };
 
 export const PRIORITY_COLORS = {
-  [PRIORITIES.LOW]: { bg: 'bg-gray-100', text: 'text-gray-700' },
-  [PRIORITIES.MEDIUM]: { bg: 'bg-blue-100', text: 'text-blue-700' },
-  [PRIORITIES.HIGH]: { bg: 'bg-orange-100', text: 'text-orange-700' },
-  [PRIORITIES.CRITICAL]: { bg: 'bg-red-100', text: 'text-red-700' },
+  [PRIORITIES.LOW]: { bg: 'bg-gray-100', text: 'text-gray-700', border: 'border-gray-300' },
+  [PRIORITIES.MEDIUM]: { bg: 'bg-blue-100', text: 'text-blue-700', border: 'border-blue-300' },
+  [PRIORITIES.HIGH]: { bg: 'bg-orange-100', text: 'text-orange-700', border: 'border-orange-300' },
+  [PRIORITIES.CRITICAL]: { bg: 'bg-red-100', text: 'text-red-700', border: 'border-red-300' },
 };
